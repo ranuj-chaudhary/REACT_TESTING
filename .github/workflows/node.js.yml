@@ -45,7 +45,9 @@ jobs:
         cache: 'npm'  # Enables caching for npm dependencies
 
     # Step 3: Install Dependencies
-    - run: npm ci
+    - run:  |
+     cd react_testing_jest
+     npm ci
       # Runs 'npm ci' to perform a clean installation of dependencies based on package-lock.json,
       # ensuring a consistent dependency tree.
 

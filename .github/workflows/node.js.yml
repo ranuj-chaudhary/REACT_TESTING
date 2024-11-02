@@ -1,6 +1,6 @@
 # Node.js Continuous Integration (CI) Workflow
-# This workflow performs a clean installation of node dependencies, 
-# caches/restores them, builds the source code, and runs tests across 
+# This workflow performs a clean installation of node dependencies,
+# caches/restores them, builds the source code, and runs tests across
 # different Node.js versions to ensure compatibility.
 
 # Workflow Name
@@ -13,13 +13,12 @@ on:
   #   branches: [ "main" ]
   # Run the workflow on pull requests targeting the "main" branch
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 # Job Definitions
 jobs:
   # Main job named "build"
   build:
-
     # Define the operating system used for the job
     runs-on: ubuntu-latest
 
@@ -27,28 +26,26 @@ jobs:
     strategy:
       # Run the job across multiple Node.js versions
       matrix:
-        node-version: [20.x]  # Testing on Node.js versions 18, 20, and 22
+        node-version: [20.x] # Testing on Node.js versions 18, 20, and 22
         # Reference for supported Node.js versions: https://nodejs.org/en/about/releases/
 
     # Workflow Steps
     steps:
-    # Step 1: Checkout the Repository
-    - uses: actions/checkout@v4
-      # Uses the GitHub Action for checking out the code repository
+      # Step 1: Checkout the Repository
+      - uses: actions/checkout@v4
+        # Uses the GitHub Action for checking out the code repository
 
-    # Step 2: Set up Node.js
-    - name: Use Node.js ${{ matrix.node-version }}
-      # Uses the GitHub Action to set up the specified Node.js version
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}  # Specifies the Node.js version from the matrix
-        cache: 'npm'  # Enables caching for npm dependencies
+      # Step 2: Set up Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
+        # Uses the GitHub Action to set up the specified Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }} # Specifies the Node.js version from the matrix
+          cache: "npm" # Enables caching for npm dependencies
 
-    # Step 3: Install Dependencies
-    - run:  |
-     cd react_testing_jest
-     npm ci
-      # Runs 'npm ci' to perform a clean installation of dependencies based on package-lock.json,
-      # ensuring a consistent dependency tree.
+      # Step 3: Install Dependencies
+      - run: |
+          cd react_testing_jest
+          npm ci
 
-    - run: npm run test
+      - run: npm run test

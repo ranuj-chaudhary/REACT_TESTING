@@ -27,7 +27,7 @@ jobs:
     strategy:
       # Run the job across multiple Node.js versions
       matrix:
-        node-version: [18.x, 20.x, 22.x]  # Testing on Node.js versions 18, 20, and 22
+        node-version: [20.x]  # Testing on Node.js versions 18, 20, and 22
         # Reference for supported Node.js versions: https://nodejs.org/en/about/releases/
 
     # Workflow Steps

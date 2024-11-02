@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const STATUS = {
-  HOVERED: "hovered",
+  HOVERED: "hover",
   NORMAL: "normal",
 };
 

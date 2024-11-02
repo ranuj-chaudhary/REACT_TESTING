@@ -44,8 +44,6 @@ jobs:
           cache: "npm" # Enables caching for npm dependencies
 
       # Step 3: Install Dependencies
-      - run: |
-          cd react_testing_jest
-          npm ci
+      - run: npm ci
 
       - run: npm run test
